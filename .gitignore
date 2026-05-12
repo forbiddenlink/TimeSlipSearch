@@ -69,3 +69,7 @@ search-results-snapshot.md
 squirrel.toml
 surface-audit.txt
 full-audit.txt
+
+# next-sitemap (postbuild generated)
+/public/robots.txt
+/public/sitemap*.xml

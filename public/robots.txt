@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://timeslipsearch.vercel.app
-
-# Sitemaps
-Sitemap: https://timeslipsearch.vercel.app/sitemap.xml
