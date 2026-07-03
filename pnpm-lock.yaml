@@ -6,7 +6,7 @@ settings:
 
 overrides:
   '@tootallnate/once': '>=3.0.1'
-  cookie: '>=0.7.0'
+  cookie: '>=0.7.0 <2.0.0'
   esbuild: '>=0.28.1'
   next: '>=16.2.3'
   systeminformation: '>=5.31.0'
