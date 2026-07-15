@@ -114,9 +114,12 @@ export async function GET(request: NextRequest) {
           </div>
 
           {/* Top decade */}
+          {/* `{topDecade} Era` is two children (expression + text), so Satori
+              requires an explicit display here. */}
           <div
             style={{
               fontSize: format === 'instagram' ? '72px' : '56px',
+              display: 'flex',
               color: '#ffc933',
               fontWeight: 'bold',
               marginBottom: '40px',
