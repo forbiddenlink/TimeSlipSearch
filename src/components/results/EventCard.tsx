@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import type { HistoricalEvent } from '@/lib/algolia'
+import { accessionNumber } from '@/lib/archive'
 
 interface EventCardProps {
   event: HistoricalEvent
@@ -20,37 +21,65 @@ function getEventIcon(eventType?: string): { icon: string; color: string } {
 
 export const EventCard = memo(function EventCard({ event }: EventCardProps) {
   const { icon, color } = getEventIcon(event.event_type)
+  const accession = accessionNumber(event.objectID, 'events', event.year)
 
   return (
-    <div className="aged-paper rounded p-3 hover:shadow-lg transition-shadow group relative overflow-hidden">
-      {/* Torn paper edge effect */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-aged-sepia/30 to-transparent" />
+    <div
+      className="flip-scene"
+      tabIndex={0}
+      aria-label={`${event.title} (${event.year}). Focus or hover to reveal the reference slip.`}
+    >
+      <div className="flip-card">
+        {/* FRONT: the newspaper clipping */}
+        <div className="flip-face flip-front aged-paper rounded p-3 hover:shadow-lg transition-shadow group relative overflow-hidden">
+          {/* Torn paper edge effect */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-aged-sepia/30 to-transparent" />
 
-      <div className="relative z-10 flex items-start gap-3">
-        {/* Event type indicator */}
-        <span className={`text-lg flex-shrink-0 ${color} font-serif`}>
-          {icon}
-        </span>
+          <div className="relative z-10 flex items-start gap-3">
+            {/* Event type indicator */}
+            <span className={`text-lg flex-shrink-0 ${color} font-serif`}>
+              {icon}
+            </span>
 
-        <div className="flex-1 min-w-0">
-          {/* Title - typewriter style */}
-          <h4 className="font-display text-base text-crt-dark leading-snug">
-            {event.title}
-          </h4>
+            <div className="flex-1 min-w-0">
+              {/* Title - typewriter style */}
+              <h4 className="font-display text-base text-crt-dark leading-snug">
+                {event.title}
+              </h4>
 
-          {/* Description */}
-          {event.description && event.description !== event.title && (
-            <p className="text-sm text-crt-medium mt-1 line-clamp-2 font-body italic">
-              {event.description}
-            </p>
-          )}
+              {/* Description */}
+              {event.description && event.description !== event.title && (
+                <p className="text-sm text-crt-medium mt-1 line-clamp-2 font-body italic">
+                  {event.description}
+                </p>
+              )}
+            </div>
+
+            {/* Year stamp */}
+            <div className="flex-shrink-0">
+              <span className="led-text text-crt-dark/60 text-xs px-2 py-0.5 bg-aged-sepia/20 rounded">
+                {event.year}
+              </span>
+            </div>
+          </div>
         </div>
 
-        {/* Year stamp */}
-        <div className="flex-shrink-0">
-          <span className="led-text text-crt-dark/60 text-xs px-2 py-0.5 bg-aged-sepia/20 rounded">
-            {event.year}
-          </span>
+        {/* BACK: the reference slip */}
+        <div className="flip-face flip-face--back catalog-card rounded p-3 flex flex-col gap-1.5 text-left">
+          <div className="flex items-center justify-between gap-2">
+            <span className="catalog-label text-[10px] text-crt-dark/70">Reference Slip</span>
+            <span className="accession-stamp text-[9px] px-1.5 py-0.5 leading-tight">
+              {accession}
+            </span>
+          </div>
+          <p className="catalog-label text-[10px] text-crt-dark/60">
+            Source · Historical Record{event.importance ? ` · ${event.importance}` : ''}
+          </p>
+          <p className="font-body text-xs text-crt-dark/90 line-clamp-3 italic">
+            {event.description && event.description !== event.title
+              ? event.description
+              : event.title}
+          </p>
         </div>
       </div>
     </div>

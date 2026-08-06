@@ -203,6 +203,44 @@ export async function searchAllIndices(
 }
 
 /**
+ * Records-per-year density across all archive indices, from Algolia `year` facet counts.
+ * Powers the density-weighted timeline scrubber. Read-only aggregation — does not touch
+ * the search path. Returns an empty map on any failure so callers can fall back gracefully.
+ */
+export async function getYearDensity(): Promise<Record<number, number>> {
+  try {
+    const client = getClient()
+
+    const response = await client.search({
+      requests: [
+        { indexName: 'timeslip_songs', query: '', facets: ['year'], hitsPerPage: 0, maxValuesPerFacet: 1000 },
+        { indexName: 'timeslip_movies', query: '', facets: ['year'], hitsPerPage: 0, maxValuesPerFacet: 1000 },
+        { indexName: 'timeslip_prices', query: '', facets: ['year'], hitsPerPage: 0, maxValuesPerFacet: 1000 },
+        { indexName: 'timeslip_events', query: '', facets: ['year'], hitsPerPage: 0, maxValuesPerFacet: 1000 },
+      ],
+    })
+
+    const results = response.results as Array<{ facets?: Record<string, Record<string, number>> }>
+    const density: Record<number, number> = {}
+
+    for (const result of results) {
+      const yearFacet = result?.facets?.year
+      if (!yearFacet) continue
+      for (const [yearStr, count] of Object.entries(yearFacet)) {
+        const year = Number(yearStr)
+        if (!Number.isFinite(year)) continue
+        density[year] = (density[year] ?? 0) + count
+      }
+    }
+
+    return density
+  } catch (error) {
+    console.error('[Algolia] Year density error:', error)
+    return {}
+  }
+}
+
+/**
  * Get the admin client for indexing operations
  */
 export function getAdminClient() {
