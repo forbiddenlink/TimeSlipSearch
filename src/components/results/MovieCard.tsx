@@ -3,96 +3,61 @@ import Image from 'next/image'
 import type { Movie } from '@/lib/algolia'
 import { FilmIcon, StarIcon } from '@/components/icons/Icons'
 import { TiltCard } from '@/components/ui/TiltCard'
-import { accessionNumber } from '@/lib/archive'
 
 interface MovieCardProps {
   movie: Movie
 }
 
 export const MovieCard = memo(function MovieCard({ movie }: MovieCardProps) {
-  const accession = accessionNumber(movie.objectID, 'movies', movie.year)
-
   return (
-    <div
-      className="flip-scene"
-      tabIndex={0}
-      aria-label={`${movie.title} (${movie.year}). Focus or hover to reveal the catalog card.`}
-    >
-      <div className="flip-card">
-        {/* FRONT: the film */}
-        <TiltCard className="flip-face flip-front flex gap-4 p-3 glass-card border border-crt-light/20 rounded-lg hover:border-phosphor-amber/50 transition-all duration-300 group hover:bg-crt-dark/60">
-          {/* Movie poster with film strip aesthetic */}
-          <div className="relative flex-shrink-0">
-            <div className="film-strip">
-              {movie.poster_url ? (
-                <div className="w-16 h-24 relative mx-3 overflow-hidden border border-crt-light/30 rounded-sm shadow-lg">
-                  <Image
-                    src={movie.poster_url}
-                    alt={movie.title}
-                    fill
-                    className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
-                    sizes="64px"
-                  />
-                  {/* Vintage overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-aged-sepia/20 to-transparent mix-blend-multiply" />
-                </div>
-              ) : (
-                <div className="w-16 h-24 mx-3 bg-crt-medium border border-crt-light/30 flex items-center justify-center rounded-sm">
-                  <FilmIcon size={24} className="text-phosphor-amber/50" />
-                </div>
-              )}
+    <TiltCard className="flex gap-4 p-3 glass-card border border-crt-light/20 rounded-lg hover:border-phosphor-amber/50 transition-all duration-300 group hover:bg-crt-dark/60">
+      {/* Movie poster with film strip aesthetic */}
+      <div className="relative flex-shrink-0">
+        <div className="film-strip">
+          {movie.poster_url ? (
+            <div className="w-16 h-24 relative mx-3 overflow-hidden border border-crt-light/30 rounded-sm shadow-lg">
+              <Image
+                src={movie.poster_url}
+                alt={movie.title}
+                fill
+                className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                sizes="64px"
+              />
+              {/* Vintage overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-aged-sepia/20 to-transparent mix-blend-multiply" />
             </div>
-          </div>
-
-          {/* Movie info */}
-          <div className="flex-1 min-w-0 py-1">
-            <h4 className="font-display text-lg text-aged-cream truncate group-hover:text-phosphor-amber transition-colors drop-shadow-sm">
-              {movie.title}
-            </h4>
-            <p className="led-text text-phosphor-teal text-sm tracking-wide">{movie.year}</p>
-
-            {movie.genres && movie.genres.length > 0 && (
-              <p className="text-sm text-aged-cream/50 truncate mt-1.5 font-body">
-                {movie.genres.slice(0, 2).join(' / ')}
-              </p>
-            )}
-
-            {/* Rating as LED display */}
-            <div className="flex items-center gap-2 mt-2.5">
-              <StarIcon size={14} className="text-phosphor-amber" />
-              <div className="led-display px-2 py-0.5 inline-flex bg-black/40 border-crt-light/20">
-                <span className="led-text text-phosphor-amber text-xs tracking-wider">
-                  {movie.vote_average.toFixed(1)}
-                </span>
-              </div>
-            </div>
-          </div>
-        </TiltCard>
-
-        {/* BACK: the catalog card */}
-        <div className="flip-face flip-face--back catalog-card rounded-lg p-3 flex flex-col gap-1.5 text-left">
-          <div className="flex items-start justify-between gap-2">
-            <span className="catalog-label text-[10px] text-crt-dark/70">Card Catalog</span>
-            <span className="accession-stamp text-[9px] px-1.5 py-0.5 leading-tight">
-              {accession}
-            </span>
-          </div>
-          <p className="catalog-label text-[10px] text-crt-dark/60">Source · The Movie Database</p>
-          {movie.overview ? (
-            <p className="font-body text-xs text-crt-dark/90 line-clamp-3 italic">
-              {movie.overview}
-            </p>
           ) : (
-            movie.genres && movie.genres.length > 0 && (
-              <p className="font-body text-xs text-crt-dark/90">{movie.genres.join(' · ')}</p>
-            )
+            <div className="w-16 h-24 mx-3 bg-crt-medium border border-crt-light/30 flex items-center justify-center rounded-sm">
+              <FilmIcon size={24} className="text-phosphor-amber/50" />
+            </div>
           )}
-          <p className="catalog-label text-[10px] text-crt-dark/70 mt-auto">
-            Rating {movie.vote_average.toFixed(1)}/10 · Released {movie.year}
-          </p>
         </div>
       </div>
-    </div>
+
+      {/* Movie info */}
+      <div className="flex-1 min-w-0 py-1">
+        <h4 className="font-display text-lg text-aged-cream truncate group-hover:text-phosphor-amber transition-colors drop-shadow-sm">
+          {movie.title}
+        </h4>
+        <p className="led-text text-phosphor-teal text-sm tracking-wide">{movie.year}</p>
+
+        {movie.genres && movie.genres.length > 0 && (
+          <p className="text-sm text-aged-cream/50 truncate mt-1.5 font-body">
+            {movie.genres.slice(0, 2).join(' / ')}
+          </p>
+        )}
+
+        {/* Rating as LED display */}
+        <div className="flex items-center gap-2 mt-2.5">
+          <StarIcon size={14} className="text-phosphor-amber" />
+          <div className="led-display px-2 py-0.5 inline-flex bg-black/40 border-crt-light/20">
+            <span className="led-text text-phosphor-amber text-xs tracking-wider">
+              {movie.vote_average.toFixed(1)}
+            </span>
+          </div>
+        </div>
+      </div>
+    </TiltCard>
   )
 })
 

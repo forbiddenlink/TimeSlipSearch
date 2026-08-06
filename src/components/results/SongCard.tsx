@@ -2,7 +2,6 @@ import { memo } from 'react'
 import type { Song } from '@/lib/algolia'
 import { MusicIcon } from '@/components/icons/Icons'
 import { TiltCard } from '@/components/ui/TiltCard'
-import { accessionNumber } from '@/lib/archive'
 
 interface SongCardProps {
   song: Song
@@ -11,62 +10,37 @@ interface SongCardProps {
 
 export const SongCard = memo(function SongCard({ song, rank }: SongCardProps) {
   const position = rank ?? song.chart_position
-  const peak = song.peak_position ?? position
-  const accession = accessionNumber(song.objectID, 'music', song.year)
 
   return (
-    <div
-      className="flip-scene"
-      tabIndex={0}
-      aria-label={`${song.song_title} by ${song.artist}. Focus or hover to reveal the catalog card.`}
-    >
-      <div className="flip-card">
-        {/* FRONT: the record */}
-        <TiltCard className="flip-face flip-front flex items-center gap-4 p-3 glass-card border border-crt-light/20 rounded-lg hover:border-vinyl-label/50 transition-all duration-300 group hover:bg-crt-dark/60">
-          {/* Vinyl record style rank indicator */}
-          <div className="relative flex-shrink-0">
-            <div className="w-12 h-12 vinyl-record flex items-center justify-center group-hover:animate-vinyl-spin shadow-md">
-              <span className="led-text text-aged-cream text-lg font-bold relative z-10">
-                {position}
-              </span>
-            </div>
-          </div>
-
-          {/* Song info */}
-          <div className="flex-1 min-w-0">
-            <h4 className="font-display text-lg text-aged-cream truncate group-hover:text-phosphor-teal transition-colors drop-shadow-sm">
-              {song.song_title}
-            </h4>
-            <p className="text-sm text-aged-cream/60 truncate font-body italic">
-              {song.artist}
-            </p>
-          </div>
-
-          {/* Weeks on chart */}
-          {song.weeks_on_chart && (
-            <div className="flex-shrink-0 led-display px-2 py-1 bg-black/40 border-crt-light/20">
-              <span className="led-text text-phosphor-amber text-sm tracking-wider">
-                {song.weeks_on_chart}w
-              </span>
-            </div>
-          )}
-        </TiltCard>
-
-        {/* BACK: the catalog card */}
-        <div className="flip-face flip-face--back catalog-card rounded-lg p-3 flex items-center gap-3 text-left">
-          <span className="accession-stamp flex-shrink-0 text-[10px] px-1.5 py-1 leading-tight">
-            {accession}
+    <TiltCard className="flex items-center gap-4 p-3 glass-card border border-crt-light/20 rounded-lg hover:border-vinyl-label/50 transition-all duration-300 group hover:bg-crt-dark/60">
+      {/* Vinyl record style rank indicator */}
+      <div className="relative flex-shrink-0">
+        <div className="w-12 h-12 vinyl-record flex items-center justify-center group-hover:animate-vinyl-spin shadow-md">
+          <span className="led-text text-aged-cream text-lg font-bold relative z-10">
+            {position}
           </span>
-          <div className="flex-1 min-w-0">
-            <p className="catalog-label text-[10px] text-crt-dark/60">Source · Billboard Hot 100</p>
-            <p className="font-body text-sm text-crt-dark truncate">
-              Peak #{peak} · Chart #{position}
-              {song.weeks_on_chart ? ` · ${song.weeks_on_chart}w` : ''}
-            </p>
-          </div>
         </div>
       </div>
-    </div>
+
+      {/* Song info */}
+      <div className="flex-1 min-w-0">
+        <h4 className="font-display text-lg text-aged-cream truncate group-hover:text-phosphor-teal transition-colors drop-shadow-sm">
+          {song.song_title}
+        </h4>
+        <p className="text-sm text-aged-cream/60 truncate font-body italic">
+          {song.artist}
+        </p>
+      </div>
+
+      {/* Weeks on chart */}
+      {song.weeks_on_chart && (
+        <div className="flex-shrink-0 led-display px-2 py-1 bg-black/40 border-crt-light/20">
+          <span className="led-text text-phosphor-amber text-sm tracking-wider">
+            {song.weeks_on_chart}w
+          </span>
+        </div>
+      )}
+    </TiltCard>
   )
 })
 
