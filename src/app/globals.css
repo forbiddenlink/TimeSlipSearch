@@ -1381,3 +1381,18 @@ a:focus-visible {
 .pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
+
+/* === READING ROOM: decade-spine quick-nav (timeline strip only) === */
+/* Scoped to the timeline's chaptered decade navigation. The era color-temp
+   shift lives inside the timeline component and does not affect the page. */
+.reading-room-spine {
+  background: linear-gradient(180deg, #211f1c 0%, #17150f 100%);
+}
+
+.spine-tab {
+  border-right: 1px solid rgba(61, 58, 53, 0.4);
+}
+
+.spine-tab:last-child {
+  border-right: 0;
+}
