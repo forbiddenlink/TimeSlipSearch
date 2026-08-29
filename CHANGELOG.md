@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/forbiddenlink/time-slip-search/compare/v1.0.0...v1.0.1) (2026-08-29)
+
+
+### Bug Fixes
+
+* **deps:** bump next to 16.3.3 for AVIF image RCE ([#66](https://github.com/forbiddenlink/time-slip-search/issues/66)) ([668f99e](https://github.com/forbiddenlink/time-slip-search/commit/668f99e221af7f8544e06247434a3f2aa2bb2c16))
+
 ## 1.0.0 (2026-08-16)
 
 
