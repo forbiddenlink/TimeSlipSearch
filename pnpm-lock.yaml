@@ -7,21 +7,21 @@ settings:
 overrides:
   '@babel/core': '>=7.29.6 <8'
   '@opentelemetry/core': '>=2.8.0 <3'
-  '@tootallnate/once': '>=3.0.1'
+  '@tootallnate/once': '>=3.0.1 <4'
   brace-expansion: '>=5.0.8 <6'
   cookie: '>=0.7.0 <2.0.0'
-  deepmerge-ts: '>=8.0.0'
+  deepmerge-ts: '>=8.0.0 <9'
   engine.io: '>=6.6.7 <7'
-  esbuild: '>=0.28.1'
+  esbuild: '>=0.28.1 <1'
   js-yaml: '>=4.3.1 <5'
   nanoid: '>=5.1.6 <6'
-  next: '>=16.2.3'
+  next: '>=16.2.3 <17'
   postcss: '>=8.5.18 <9'
   sharp: '>=0.35.0 <1'
-  systeminformation: '>=5.31.0'
+  systeminformation: '>=5.31.0 <6'
   undici: '>=7.28.0 <8'
   vite: ^8.2.2
-  ws: '>=8.21.0'
+  ws: '>=8.21.0 <9'
   browserslist: '>=4.28.7 <5'
 
 importers:
@@ -89,7 +89,7 @@ importers:
         specifier: ^1.31.0
         version: 1.34.0(react@19.2.8)
       next:
-        specifier: '>=16.2.3'
+        specifier: '>=16.2.3 <17'
         version: 16.3.3(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       next-axiom:
         specifier: ^1.10.0
@@ -1758,7 +1758,7 @@ packages:
     resolution: {integrity: sha512-74Q3F65PVGCo6fNr+0UnDLwnfJiHBLASdQ0jMyANcmn149d8BdR8eqwk4OLkI5hIDFNsgdJOfdB+ZVwwp1p6+A==}
     engines: {node: '>=18'}
     peerDependencies:
-      next: '>=16.2.3'
+      next: '>=16.2.3 <17'
 
   '@sentry/node-core@10.71.0':
     resolution: {integrity: sha512-sxd0/ZW+Uda/17H0R7lB2Othm37VYcdwKdWdyHRizg872TfCX4UwTTPaoS2tMJAUjV2tVh83ZA0fsoC2q9SpjA==}
@@ -2308,7 +2308,7 @@ packages:
     peerDependencies:
       '@remix-run/react': ^2
       '@sveltejs/kit': ^1 || ^2
-      next: '>=16.2.3'
+      next: '>=16.2.3 <17'
       nuxt: '>= 3'
       react: ^18 || ^19 || ^19.0.0-rc
       svelte: '>= 4'
@@ -2349,7 +2349,7 @@ packages:
     resolution: {integrity: sha512-jwkNcrTeafWxjmWq4AHBaptSqZiJkYU5adLC9QBSqeim0GcqDMgN5Ievh8OG1rJ6W3A4l1oiP7qr9CWxGuzu3w==}
     peerDependencies:
       '@sveltejs/kit': ^1 || ^2
-      next: '>=16.2.3'
+      next: '>=16.2.3 <17'
       nuxt: '>= 3'
       react: ^18 || ^19 || ^19.0.0-rc
       svelte: '>= 4'
@@ -4299,14 +4299,14 @@ packages:
     resolution: {integrity: sha512-PpwmfOqoa2xWKcGmYb3d5t3R4+/J8C2D00IhJsI3Qk0xxv9tNvGzS/hKKOPNOuUwqM4b/etqu6iGW7tkKvltgA==}
     engines: {node: '>=18'}
     peerDependencies:
-      next: '>=16.2.3'
+      next: '>=16.2.3 <17'
       react: '>=18.0.0'
 
   next-safe-action@8.6.1:
     resolution: {integrity: sha512-qFkpXnuZ+xEGsKlQi1079B5hy1aNlvb8kJVcEvzFXP1PMm9z5GI5VhfhZCDVLCXkT1rryaFLeUdJGHm1L7ef0Q==}
     engines: {node: '>=18.17'}
     peerDependencies:
-      next: '>=16.2.3'
+      next: '>=16.2.3 <17'
       react: '>= 18.2.0'
       react-dom: '>= 18.2.0'
 
@@ -4315,7 +4315,7 @@ packages:
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
-      next: '>=16.2.3'
+      next: '>=16.2.3 <17'
 
   next@16.3.3:
     resolution: {integrity: sha512-tuRTx1nQ/yVw83cwJBo9F+njGUgMn3UHQycreWHB8XsStvvAh1AthbI8/4IpKnFaF58F+iSiHejYOlMQ/eq83g==}
@@ -5223,7 +5223,7 @@ packages:
     peerDependencies:
       '@types/node': ^20.19.0 || >=22.12.0
       '@vitejs/devtools': ^0.4.0 || ^0.5.0
-      esbuild: '>=0.28.1'
+      esbuild: '>=0.28.1 <1'
       jiti: '>=1.21.0'
       less: ^4.0.0
       sass: ^1.70.0

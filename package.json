@@ -85,21 +85,21 @@
     "overrides": {
       "@babel/core": ">=7.29.6 <8",
       "@opentelemetry/core": ">=2.8.0 <3",
-      "@tootallnate/once": ">=3.0.1",
+      "@tootallnate/once": ">=3.0.1 <4",
       "brace-expansion": ">=5.0.8 <6",
       "cookie": ">=0.7.0 <2.0.0",
-      "deepmerge-ts": ">=8.0.0",
+      "deepmerge-ts": ">=8.0.0 <9",
       "engine.io": ">=6.6.7 <7",
-      "esbuild": ">=0.28.1",
+      "esbuild": ">=0.28.1 <1",
       "js-yaml": ">=4.3.1 <5",
       "nanoid": ">=5.1.6 <6",
-      "next": ">=16.2.3",
+      "next": ">=16.2.3 <17",
       "postcss": ">=8.5.18 <9",
       "sharp": ">=0.35.0 <1",
-      "systeminformation": ">=5.31.0",
+      "systeminformation": ">=5.31.0 <6",
       "undici": ">=7.28.0 <8",
       "vite": "^8.2.2",
-      "ws": ">=8.21.0",
+      "ws": ">=8.21.0 <9",
       "browserslist": ">=4.28.7 <5"
     }
   }
