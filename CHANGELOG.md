@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.3](https://github.com/forbiddenlink/time-slip-search/compare/v1.0.2...v1.0.3) (2026-09-02)
+
+
+### Bug Fixes
+
+* **ci:** let pnpm/action-setup read the version from packageManager ([b24cfe5](https://github.com/forbiddenlink/time-slip-search/commit/b24cfe556efc03ce93665ac4db7928fc4e8f8d5a))
+* **deps:** give every resolution override an upper bound ([4a1d167](https://github.com/forbiddenlink/time-slip-search/commit/4a1d167ba84908f4ad073695f258ed674343a3dd))
+* **security:** pin transitive dependencies flagged by Dependabot ([fbaec9e](https://github.com/forbiddenlink/time-slip-search/commit/fbaec9e189dfd48dd4ae9998e6687c3b6b03ca4b))
+
 ## [1.0.2](https://github.com/forbiddenlink/time-slip-search/compare/v1.0.1...v1.0.2) (2026-08-29)
 
 
