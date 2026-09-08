@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { getPersonalityDescription, type WrappedStats } from '@/lib/wrapped'
 import { downloadWrappedImage } from '@/lib/share'
 import { ShareIcon, CopyIcon, DownloadIcon } from '@/components/icons/Icons'

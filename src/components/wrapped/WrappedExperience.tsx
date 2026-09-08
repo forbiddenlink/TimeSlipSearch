@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import type { WrappedStats } from '@/lib/wrapped'
 import { IntroCard } from './cards/IntroCard'
 import { StatsCard } from './cards/StatsCard'

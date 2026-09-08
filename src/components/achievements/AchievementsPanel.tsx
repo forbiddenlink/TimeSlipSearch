@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import { getUserAchievements, type UserAchievements } from '@/lib/achievements'
 import { AchievementBadge } from './AchievementBadge'
 import { XIcon } from '@/components/icons/Icons'

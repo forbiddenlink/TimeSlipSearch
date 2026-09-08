@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import { getSeasonalPicks, getCategoryIcon, type FamousDate } from '@/lib/famous-dates'
 
 interface StaffPicksCarouselProps {
