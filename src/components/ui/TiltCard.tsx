@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 interface TiltCardProps extends React.HTMLAttributes<HTMLDivElement> {

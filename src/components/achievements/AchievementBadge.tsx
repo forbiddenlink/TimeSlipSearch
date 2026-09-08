@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { type Achievement, getRarityColor } from '@/lib/achievements'
 import { CheckCircleIcon, LockIcon } from '@/components/icons/Icons'
 

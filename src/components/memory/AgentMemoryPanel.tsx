@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { SearchHistory, Favorites, type SearchHistoryItem, type FavoriteDate } from '@/lib/agent-memory'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 
 interface AgentMemoryPanelProps {
   onSelectSearch: (query: string) => void

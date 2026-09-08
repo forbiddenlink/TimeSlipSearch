@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, useMemo } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion } from 'motion/react'
 import { getEra, DECADE_CHAPTERS } from '@/lib/archive'
 import type { TimelineDensityResponse } from '@/app/api/timeline/density/route'
 
