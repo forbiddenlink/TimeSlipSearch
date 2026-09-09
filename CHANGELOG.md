@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/forbiddenlink/time-slip-search/compare/v1.0.3...v1.0.4) (2026-09-08)
+
+
+### Bug Fixes
+
+* **deps:** replace dependency framer-motion with motion ^12.43.0 ([1b67671](https://github.com/forbiddenlink/time-slip-search/commit/1b67671353cac028e03710561d56db7065dcfac7))
+
 ## [1.0.3](https://github.com/forbiddenlink/time-slip-search/compare/v1.0.2...v1.0.3) (2026-09-02)
 
 
